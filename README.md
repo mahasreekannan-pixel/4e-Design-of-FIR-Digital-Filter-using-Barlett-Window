@@ -32,7 +32,6 @@ PC installed with SCILAB.
 <br>xlabel('Normalized Digital Frequency w');
 <br>ylabel('Magnitude');
 <br>title('Frequency Response of FIR LPF using Bartlett Window')
-
 <br>hzm_dB = 20*log10(hzm);
 <br>subplot(2,1,2);
 <br>plot(2*fr, hzm_dB);
