@@ -39,6 +39,11 @@ PC installed with SCILAB.
 <br>ylabel('Magnitude in dB');
 <br>title('Frequency Response of FIR LPF using Bartlett Window (dB)')
 
+# Manual Calculation :
+<img width="946" height="1568" alt="image" src="https://github.com/user-attachments/assets/bc55bf25-a757-4856-ae33-68aaf0328110" />
+<img width="1099" height="1599" alt="image" src="https://github.com/user-attachments/assets/286dbbde-d054-4caa-9419-9c501e42f5be" />
+
+
 # OUTPUT: 
 <img width="428" height="297" alt="image" src="https://github.com/user-attachments/assets/5d0a079d-e0bd-4df8-b962-2c202832b0f7" />
 
@@ -102,9 +107,44 @@ Thus design of HIGH pass FIR digital filter using-Barlett-Window waveforms were 
 PC installed with SCILAB. 
 
 # PROGRAM: 
-
-
+```
+clc ; 
+close ; 
+M=input('Enter the Odd Filter Length ='); 
+Wc=input('Enter the Digital Cut off frequency ='); 
+Wc2=Wc(2); 
+Wc1=Wc(1); 
+alpha= (M -1)/2 // Center Value 
+for n = 1:M 
+if (n ==alpha+1) 
+hd(n) =(Wc2-Wc1)/%pi ; 
+else 
+hd(n) =((sin(Wc2 *((n -1)-alpha)))-(sin(Wc1 *((n -1)-alpha))))/(((n -1)-alpha)*%pi); 
+end 
+end 
+// Bartlett Window 
+for n = 1:M 
+W(n)=1-((2*abs((n-1)-((M-1)/2)))/(M-1)); 
+end 
+//Windowing filter coefficients 
+h = hd.*W; 
+disp(h,'Filter Coefficients are') 
+[hzm,fr]= frmag (h,256) ; 
+subplot(2 ,1 ,1) 
+plot(2*fr, hzm) 
+xlabel( ' Normalized Digital Frequency w'); 
+ylabel( 'Magnitude '); 
+title( ' Frequency Response of FIR BPF using Bartlett Window ') 
+hzm_dB = 20* log10 (hzm); 
+subplot (2 ,1 ,2); 
+plot(2*fr , hzm_dB); 
+xlabel( ' Normalized Digital Frequency W' ); 
+ylabel( 'Magnitude in dB'); 
+title('Frequency Response of FIR BPF using Bartlett Window');
+```
 # OUTPUT: 
+<img width="760" height="696" alt="image" src="https://github.com/user-attachments/assets/759dbdf7-f2a2-408b-97a2-9267d9dc1213" />
+<img width="572" height="870" alt="image" src="https://github.com/user-attachments/assets/7e6873ca-c1ab-4949-8ac8-8bf3347d58d8" />
 
 
 # RESULT: 
@@ -116,9 +156,44 @@ Thus design of BAND pass FIR digital filter using-Barlettr-Window waveforms were
 PC installed with SCILAB. 
 
 # PROGRAM: 
-
-
+```
+clc ; 
+close ; 
+M=input('Enter the Odd Filter Length ='); 
+Wc=input('Enter the Digital Cut off frequency ='); 
+Wc2=Wc(2); 
+Wc1=Wc(1); 
+alpha= (M -1)/2 // Center Value 
+for n = 1:M 
+if (n ==alpha+1) 
+hd(n) =1-((Wc2-Wc1)/%pi); 
+else 
+hd(n) =((sin(Wc1 *((n -1)-alpha)))-(sin(Wc2 *((n -1)-alpha))))/(((n -1)-alpha)*%pi); 
+end 
+end 
+// Bartlett Window 
+for n = 1:M 
+W(n)=1-((2*abs((n-1)-((M-1)/2)))/(M-1)); 
+end 
+//Windowing filter coefficients 
+h = hd.*W; 
+disp(h,'Filter Coefficients are') 
+[hzm,fr]= frmag (h,256) ; 
+subplot(2 ,1 ,1) 
+plot(2*fr, hzm) 
+xlabel( ' Normalized Digital Frequency w'); 
+ylabel( 'Magnitude '); 
+title( ' Frequency Response of FIR BSF using Bartlett Window ') 
+hzm_dB = 20* log10 (hzm); 
+subplot (2 ,1 ,2); 
+plot(2*fr , hzm_dB); 
+xlabel( ' Normalized Digital Frequency W' ); 
+ylabel( 'Magnitude in dB'); 
+title('Frequency Response of FIR BSF using Bartlett Window');
+```
 # OUTPUT: 
+<img width="757" height="687" alt="image" src="https://github.com/user-attachments/assets/eeab9ecc-22a1-4416-b69d-f87f126cda16" />
+<img width="590" height="783" alt="image" src="https://github.com/user-attachments/assets/088d2405-3764-46a0-a98d-1b0a0d620372" />
 
 
 # RESULT: 
