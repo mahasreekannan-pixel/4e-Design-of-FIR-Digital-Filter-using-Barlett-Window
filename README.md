@@ -213,3 +213,5 @@ Thus design of BAND STOP FIR digital filter using-Barlett-Window waveforms were 
 <img width="1099" height="1599" alt="image" src="https://github.com/user-attachments/assets/286dbbde-d054-4caa-9419-9c501e42f5be" />
 # RESULT: 
 Thus design of BAND STOP FIR digital filter using-Barlett-Window waveforms were plotted and output was verified.
+# RESULT: 
+Thus design of BAND STOP FIR digital filter using-Barlett-Window waveforms were plotted and output was verified.
